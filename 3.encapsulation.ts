@@ -14,25 +14,26 @@ to set the `divisor` member variable.
 
 Questions:
 1) What did you learn from this exercise?
+Ans: I learnt about how to protection of variable to called from the other function.
 */
 class SafeDivisor {
-    divisor: number = 1;
+  private divisor: number = 1;
 
-    setDivisor(value: number) {
-        if (value == 0) {
-            throw new Error("Value should not be 0");
-        }
-        this.divisor = value; 
+  setDivisor(value: number) {
+    if (value == 0) {
+      throw new Error("Value should not be 0");
     }
+    this.divisor = value;
+  }
 
-    divide(x: number): number { 
-        return x / this.divisor;
-    }
+  divide(x: number): number {
+    return x / this.divisor;
+  }
 }
 
 function exploit(): number {
-    let sd = new SafeDivisor();
+  let sd = new SafeDivisor();
 
-    sd.divisor = 0;
-    return sd.divide(42); 
+  sd.divisor = 0;
+  return sd.divide(42);
 }
